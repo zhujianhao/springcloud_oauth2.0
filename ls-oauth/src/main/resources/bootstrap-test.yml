@@ -1,0 +1,19 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: ls-oauth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.194.189:8848
+        namespace: 043debab-6937-4d51-9c75-b410d1381959
+      config:
+        server-addr: 47.99.194.189:8848
+        namespace: 043debab-6937-4d51-9c75-b410d1381959
+        file-extension: yml
+        ext-config:
+          - data-id: datasource.yml
+            refresh: true
+
+

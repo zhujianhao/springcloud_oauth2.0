@@ -1,0 +1,35 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: ls-wechat
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.194.189:8848
+        namespace: 043debab-6937-4d51-9c75-b410d1381959
+      config:
+        server-addr: 47.99.194.189:8848
+        namespace: 043debab-6937-4d51-9c75-b410d1381959
+        file-extension: yml
+        ext-config:
+          - data-id: datasource.yml
+            refresh: true
+  redis:
+    maxTotal: 99
+    minIdle: 10
+    maxIdle: 20
+    maxWaitMillis: 3000
+    testOnBorrow: true
+    testWhileIdle: true
+    host: 47.99.194.189
+    port: 6379
+    timeout: 5000ms
+    password: 123456
+    database: 0
+    lettuce:
+      pool:
+        max-active: 99
+        max-idle: 20
+        max-wait: 3000

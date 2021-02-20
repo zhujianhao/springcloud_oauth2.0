@@ -7,30 +7,30 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
- * @author zhujianhao
- * @date 2021/2/19 15:26
- * @modify
- */
+ * @author Administrator
+ * @version 1.0
+ **/
 @Configuration
 public class TokenConfig {
 
-    //配置如何把普通token转换成jwt token
+    private String SIGNING_KEY = "uaa123";
 
-
-    private String secret = "123";
     @Bean
-    public JwtAccessTokenConverter tokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+    public TokenStore tokenStore() {
+        //JWT令牌存储方案
+        return new JwtTokenStore(accessTokenConverter());
+    }
 
-        //使用对称秘钥加密token,resource那边会用这个秘钥校验token
-        converter.setSigningKey(secret);
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setSigningKey(SIGNING_KEY); //对称秘钥，资源服务器使用该秘钥来验证
         return converter;
     }
 
-    //配置token的存储方法
-    @Bean
+   /* @Bean
     public TokenStore tokenStore() {
-        //把用户信息都存储在token当中,相当于存储在客户端,性能好很多
-        return new JwtTokenStore(tokenConverter());
-    }
+        //使用内存存储令牌（普通令牌）
+        return new InMemoryTokenStore();
+    }*/
 }

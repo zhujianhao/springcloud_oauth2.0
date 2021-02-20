@@ -62,5 +62,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    private static String[]  whiteList = {"/1"};
+    private static String[]  whiteList = {"/1","/login"};
 }

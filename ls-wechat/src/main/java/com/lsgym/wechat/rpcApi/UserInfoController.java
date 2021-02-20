@@ -29,9 +29,7 @@ public class UserInfoController {
      */
     @PostMapping("getSecurityUserDetail")
     public Result<AccountVo> getAccountByName(@RequestParam("userName")String userName){
-        if(true){
-            throw new MyException("testerro");
-        }
+
         return Result.ok(accountService.getByUserName(userName));
     }
 }

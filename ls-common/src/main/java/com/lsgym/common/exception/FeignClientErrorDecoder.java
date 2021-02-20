@@ -41,7 +41,9 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
             if (response.status() >= 400 && response.status() <= 500) {
                 //throw new MyException(message);
                 if (!StringUtils.isEmpty(message)) {
-                    return new MyException(message);
+                    MyException exception = new MyException(message);
+                    exception.setCode(response.status());
+                    return exception;
                 }
 
             }

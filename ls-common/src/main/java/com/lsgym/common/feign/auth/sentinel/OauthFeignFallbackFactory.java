@@ -16,7 +16,7 @@ public class OauthFeignFallbackFactory implements FallbackFactory<OauthFeignServ
         return new OauthFeignService() {
 
             @Override
-            public TokenVo getToken(String grantType, String username, String password, String scope) {
+            public TokenVo getToken(String  clientId,String  clientSecret,String grantType, String username, String password, String scope) {
                 throw new MyException(throwable.getMessage());
             }
         };

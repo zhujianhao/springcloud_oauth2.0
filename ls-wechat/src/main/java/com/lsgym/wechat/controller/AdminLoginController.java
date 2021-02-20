@@ -23,7 +23,7 @@ public class AdminLoginController {
 
     @PostMapping("doLogin")
     public Result<String> doLogin(@RequestBody LoginDto loginDto){
-        TokenVo tokenVo = oauthFeignService.getToken("passwprd",loginDto.getUserName(),loginDto.getPassWord(),"");
+        TokenVo tokenVo = oauthFeignService.getToken("wechat","123","password",loginDto.getUserName(),loginDto.getPassWord(),"");
         return Result.ok(tokenVo.getAccess_token());
     }
 }

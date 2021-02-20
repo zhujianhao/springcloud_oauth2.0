@@ -7,6 +7,7 @@ import com.lsgym.common.feign.wechat.sentinel.WechatFeignFallbackFactory;
 import com.lsgym.common.utils.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,8 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 @FeignClient(value = "ls-oauth", fallbackFactory = OauthFeignFallbackFactory.class)
 public interface OauthFeignService {
 
-    @GetMapping("oauth/token")
-    TokenVo getToken(@RequestParam("grant_type") String grantType,
+    @PostMapping("oauth/token")
+    TokenVo getToken(@RequestParam("client_id") String clientId,
+                     @RequestParam("client_secret") String clientSecret,
+                     @RequestParam("grant_type") String grantType,
                      @RequestParam("username") String username,
                      @RequestParam("password") String password,
                      @RequestParam(value = "scope",required = false) String scope);

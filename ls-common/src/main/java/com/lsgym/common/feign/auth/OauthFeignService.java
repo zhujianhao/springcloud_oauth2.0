@@ -1,5 +1,6 @@
 package com.lsgym.common.feign.auth;
 
+import com.alibaba.fastjson.JSONObject;
 import com.lsgym.common.entity.oauth.vo.TokenVo;
 import com.lsgym.common.entity.wechat.vo.AccountVo;
 import com.lsgym.common.feign.auth.sentinel.OauthFeignFallbackFactory;
@@ -28,6 +29,9 @@ public interface OauthFeignService {
                      @RequestParam("username") String username,
                      @RequestParam("password") String password,
                      @RequestParam(value = "scope",required = false) String scope);
+
+//    @GetMapping("oauth/check_token")
+//    JSONObject checkToken(@RequestParam("token") String token);
 
 
 }

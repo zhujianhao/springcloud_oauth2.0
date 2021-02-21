@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @version 1.0
  **/
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //认证管理器

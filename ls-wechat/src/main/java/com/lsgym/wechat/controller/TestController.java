@@ -1,6 +1,9 @@
 package com.lsgym.wechat.controller;
 
+import com.lsgym.common.annotation.LoginUser;
+import com.lsgym.common.entity.wechat.Account;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("hello")
-    public String test(){
-        return "world";
+    public String test(@LoginUser Account account){
+        return account.getUserName();
+//        return "world";
     }
 }
